@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KOWEN — El bien para todas las generaciones</title>
+<title>KOWEN — El bien para todas las generaciones | Andes</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --verde-oscuro: #1a3a2a;
-    --verde-medio: #2d5c3f;
-    --verde-claro: #4a8c5c;
-    --verde-suave: #a8d4b0;
-    --tierra: #c4874a;
-    --tierra-claro: #f0d4b0;
-    --crema: #f7f2e8;
-    --blanco: #fdfaf5;
-    --texto: #1a2a1e;
-    --texto-suave: #4a6a52;
+    --verde-oscuro: #1a2a4a;
+    --verde-medio: #2a4a7a;
+    --verde-claro: #4a7ab5;
+    --verde-suave: #b0c4e8;
+    --tierra: #e8a84a;
+    --tierra-claro: #f5dfa8;
+    --crema: #f5f0e8;
+    --blanco: #faf8f4;
+    --texto: #1a2440;
+    --texto-suave: #4a5a7a;
     --font-display: 'Playfair Display', Georgia, serif;
     --font-body: 'DM Sans', sans-serif;
   }
@@ -37,12 +37,12 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.2rem 5%;
-    background: rgba(253,250,245,0.92);
+    background: rgba(250,248,244,0.92);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(74,140,92,0.15);
+    border-bottom: 1px solid rgba(74,122,181,0.15);
     transition: box-shadow .3s;
   }
-  nav.scrolled { box-shadow: 0 2px 24px rgba(26,58,42,0.08); }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(26,42,74,0.08); }
 
   .nav-logo {
     font-family: var(--font-display);
@@ -188,17 +188,17 @@
   .hero-right::before {
     content: '';
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-claro) 60%, var(--verde-suave) 100%);
+    background: linear-gradient(135deg, #1a2a4a 0%, #2a4a7a 50%, #4a7ab5 100%);
     z-index: 1;
   }
 
   .hero-pattern {
     position: absolute; inset: 0; z-index: 2;
-    opacity: .08;
+    opacity: .06;
     background-image:
       radial-gradient(circle at 20% 20%, white 1px, transparent 1px),
       radial-gradient(circle at 80% 80%, white 1px, transparent 1px),
-      radial-gradient(circle at 50% 50%, white 1.5px, transparent 1.5px);
+      radial-gradient(circle at 50% 50%, #e8a84a 1.5px, transparent 1.5px);
     background-size: 48px 48px, 48px 48px, 96px 96px;
   }
 
@@ -330,7 +330,7 @@
   }
   .sobre-box-main {
     width: 75%; height: 72%;
-    background: linear-gradient(145deg, var(--verde-medio), var(--verde-oscuro));
+    background: linear-gradient(145deg, #2a4a7a, #1a2a4a);
     top: 0; left: 0;
     display: flex; align-items: center; justify-content: center;
   }
@@ -391,6 +391,13 @@
     gap: 1.5rem;
     margin-top: 3.5rem;
   }
+  .programa-card.wide {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
   .programa-card {
     background: var(--crema);
     border-radius: 1.25rem;
@@ -410,7 +417,7 @@
     transform-origin: left;
     transition: transform .35s;
   }
-  .programa-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,58,42,.1); }
+  .programa-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,42,74,.12); }
   .programa-card:hover::before { transform: scaleX(1); }
 
   .prog-icon-wrap {
@@ -442,15 +449,6 @@
     font-weight: 300;
   }
 
-  /* programa 5 - wide */
-  .programa-card.wide {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
-    align-items: start;
-  }
-
   /* IMPACTO */
   .impacto {
     background: var(--verde-oscuro);
@@ -464,14 +462,14 @@
     font-family: var(--font-display);
     font-size: 18vw;
     font-weight: 700;
-    color: rgba(255,255,255,.03);
+    color: rgba(255,255,255,.025);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
     pointer-events: none;
   }
   .impacto .section-title { color: white; }
-  .impacto .section-title em { color: var(--verde-suave); }
+  .impacto .section-title em { color: var(--tierra); }
   .impacto .section-desc { color: rgba(255,255,255,.65); max-width: 480px; }
 
   .impacto-grid {
@@ -517,7 +515,7 @@
   }
   .aliado-pill {
     background: white;
-    border: 1px solid rgba(74,140,92,.2);
+    border: 1px solid rgba(74,122,181,0.2);
     border-radius: 2rem;
     padding: .6rem 1.4rem;
     font-size: .82rem;
@@ -527,7 +525,6 @@
     transition: border-color .2s, color .2s;
   }
   .aliado-pill:hover { border-color: var(--verde-claro); color: var(--verde-oscuro); }
-
   /* CONTACTO */
   .contacto {
     background: var(--blanco);
@@ -552,7 +549,7 @@
   .form-group select {
     width: 100%;
     padding: .85rem 1.1rem;
-    border: 1.5px solid rgba(74,140,92,.2);
+    border: 1.5px solid rgba(74,122,181,.2);
     border-radius: .75rem;
     font-family: var(--font-body);
     font-size: .9rem;
@@ -563,7 +560,7 @@
   }
   .form-group input:focus,
   .form-group textarea:focus,
-  .form-group select:focus { border-color: var(--verde-claro); }
+  .form-group select:focus { border-color: var(--verde-claro); background: white; }
   .form-group textarea { resize: vertical; min-height: 120px; }
 
   .form-submit {
@@ -582,7 +579,6 @@
     margin-top: .5rem;
   }
   .form-submit:hover { background: var(--verde-claro); transform: translateY(-2px); }
-
   .contacto-info { padding-top: 1rem; }
   .contacto-item {
     display: flex; gap: 1rem; align-items: flex-start;
@@ -612,7 +608,7 @@
 
   /* FOOTER */
   footer {
-    background: var(--texto);
+    background: #0f1a30;
     color: rgba(255,255,255,.55);
     padding: 3.5rem 8%;
     display: grid;
@@ -659,9 +655,9 @@
     text-decoration: none;
     transition: color .2s;
   }
-  .footer-col ul li a:hover { color: var(--verde-suave); }
+  .footer-col ul li a:hover { color: var(--tierra); }
   .footer-bottom {
-    background: rgba(0,0,0,.2);
+    background: #080f1e;
     padding: 1.2rem 8%;
     display: flex;
     justify-content: space-between;
@@ -754,7 +750,7 @@
 <!-- STATS -->
 <div class="stats">
   <div class="stat">
-    <span class="stat-num">5</span>
+    <span class="stat-num">7</span>
     <span class="stat-label">Programas activos</span>
   </div>
   <div class="stat">
@@ -798,48 +794,62 @@
 <section class="programas" id="programas">
   <div class="reveal">
     <div class="section-eyebrow">Lo que hacemos</div>
-    <h2 class="section-title">Cinco programas,<br>un solo <em>propósito</em></h2>
+    <h2 class="section-title">Siete programas,<br>un solo <em>propósito</em></h2>
     <p class="section-desc">Cada programa lleva el nombre KOWEN porque todos comparten la misma raíz: hacer el bien en comunidad.</p>
   </div>
 
   <div class="programas-grid">
     <div class="programa-card reveal">
-      <div class="prog-icon-wrap" style="background:#EAF3DE">🌿</div>
-      <div class="prog-sub">Medio ambiente</div>
-      <div class="prog-name">Kowen Verde</div>
-      <p class="prog-text">Educación ambiental, reforestación comunitaria y gestión de residuos en comunidades rurales y urbanas de todo el Perú.</p>
-    </div>
-
-    <div class="programa-card reveal">
-      <div class="prog-icon-wrap" style="background:#E6F1FB">📚</div>
+      <div class="prog-icon-wrap" style="background:#d4e4f7">📚</div>
       <div class="prog-sub">Educación</div>
       <div class="prog-name">Kowen Aprende</div>
       <p class="prog-text">Refuerzo escolar, alfabetización digital y acompañamiento pedagógico para niños y adolescentes en situación vulnerable.</p>
     </div>
 
     <div class="programa-card reveal">
-      <div class="prog-icon-wrap" style="background:#FAEEDA">💰</div>
+      <div class="prog-icon-wrap" style="background:#faebd0">💰</div>
       <div class="prog-sub">Finanzas</div>
       <div class="prog-name">Kowen Finanzas</div>
-      <p class="prog-text">Talleres de educación financiera, ahorro y emprendimiento para familias y jóvenes excluidos del sistema financiero.</p>
+      <p class="prog-text">Talleres de educación financiera, ahorro y acceso a servicios bancarios para familias y jóvenes excluidos del sistema financiero.</p>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#e8f0fe">🚀</div>
+      <div class="prog-sub">Emprendimiento</div>
+      <div class="prog-name">Kowen Emprende</div>
+      <p class="prog-text">Formación en habilidades empresariales, mentoría, acceso a capital semilla y redes de apoyo para emprendedores en zonas vulnerables.</p>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#fdefd5">🌱</div>
+      <div class="prog-sub">Adolescentes</div>
+      <div class="prog-name">Kowen Joven</div>
+      <p class="prog-text">Liderazgo, habilidades para la vida y orientación vocacional para adolescentes en zonas urbano-marginales y rurales.</p>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#e0e8f8">👴</div>
+      <div class="prog-sub">Adulto mayor</div>
+      <div class="prog-name">Kowen Mayor</div>
+      <p class="prog-text">Acompañamiento, alfabetización digital, salud preventiva y activación social para adultos mayores en situación de abandono o vulnerabilidad.</p>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#dce8f5">🌿</div>
+      <div class="prog-sub">Medio ambiente</div>
+      <div class="prog-name">Kowen Verde</div>
+      <p class="prog-text">Educación ambiental, reforestación comunitaria y gestión de residuos en comunidades rurales y urbanas de todo el Perú.</p>
     </div>
 
     <div class="programa-card wide reveal">
       <div>
-        <div class="prog-icon-wrap" style="background:#EEEDFE">👴</div>
+        <div class="prog-icon-wrap" style="background:#fce8f0">🐾</div>
       </div>
       <div>
-        <div class="prog-sub">Adulto mayor</div>
-        <div class="prog-name">Kowen Mayor</div>
-        <p class="prog-text">Acompañamiento, alfabetización digital, salud preventiva y activación social para adultos mayores en situación de abandono o vulnerabilidad. Porque la experiencia de vida es el mayor patrimonio de una comunidad.</p>
+        <div class="prog-sub">Bienestar animal</div>
+        <div class="prog-name">Kowen Animal</div>
+        <p class="prog-text">Educación en tenencia responsable de mascotas, campañas de esterilización, rescate y adopción, y promoción del bienestar animal en comunidades peruanas. Porque cuidar a los animales también es hacer el bien.</p>
       </div>
-    </div>
-
-    <div class="programa-card reveal">
-      <div class="prog-icon-wrap" style="background:#FAECE7">🌱</div>
-      <div class="prog-sub">Adolescentes</div>
-      <div class="prog-name">Kowen Joven</div>
-      <p class="prog-text">Liderazgo, habilidades para la vida y orientación vocacional para adolescentes en zonas urbano-marginales y rurales.</p>
     </div>
   </div>
 </section>
@@ -847,7 +857,7 @@
 <!-- IMPACTO -->
 <section class="impacto" id="impacto">
   <div class="reveal">
-    <div class="section-eyebrow" style="color:var(--verde-suave)">Nuestro impacto</div>
+    <div class="section-eyebrow" style="color:#b0c4e8">Nuestro impacto</div>
     <h2 class="section-title">El <em>bien</em> se mide<br>en personas</h2>
     <p class="section-desc">Cada programa tiene indicadores claros de impacto. Así es como medimos que el bien llegue a quienes más lo necesitan.</p>
   </div>
@@ -862,7 +872,7 @@
       <p class="impacto-label">Regiones del Perú donde KOWEN proyecta operar en los próximos 3 años.</p>
     </div>
     <div class="impacto-card reveal">
-      <span class="impacto-num">5</span>
+      <span class="impacto-num">7</span>
       <p class="impacto-label">Ejes de intervención que se complementan para lograr un impacto integral y sostenible.</p>
     </div>
     <div class="impacto-card reveal">
@@ -909,21 +919,21 @@
     <p class="section-desc" style="margin-bottom:2.5rem">Puedes sumarte como voluntario, donante, aliado institucional o simplemente difundiendo nuestra misión.</p>
 
     <div class="contacto-item">
-      <div class="contacto-item-icon">📍</div>
+      <div class="contacto-item-icon" style="background:#dce8f5">📍</div>
       <div class="contacto-item-text">
         <div class="contacto-item-label">Sede principal</div>
         <div class="contacto-item-val">Lima, Perú<br>Con cobertura nacional</div>
       </div>
     </div>
     <div class="contacto-item">
-      <div class="contacto-item-icon">✉️</div>
+      <div class="contacto-item-icon" style="background:#dce8f5">✉️</div>
       <div class="contacto-item-text">
         <div class="contacto-item-label">Correo</div>
         <div class="contacto-item-val">contacto@kowen.org.pe</div>
       </div>
     </div>
     <div class="contacto-item">
-      <div class="contacto-item-icon">🌐</div>
+      <div class="contacto-item-icon" style="background:#dce8f5">🌐</div>
       <div class="contacto-item-text">
         <div class="contacto-item-label">Redes sociales</div>
         <div class="contacto-item-val">@kowenperu</div>
@@ -970,11 +980,13 @@
   <div class="footer-col">
     <div class="footer-col-title">Programas</div>
     <ul>
-      <li><a href="#">Kowen Verde</a></li>
       <li><a href="#">Kowen Aprende</a></li>
       <li><a href="#">Kowen Finanzas</a></li>
-      <li><a href="#">Kowen Mayor</a></li>
+      <li><a href="#">Kowen Emprende</a></li>
       <li><a href="#">Kowen Joven</a></li>
+      <li><a href="#">Kowen Mayor</a></li>
+      <li><a href="#">Kowen Verde</a></li>
+      <li><a href="#">Kowen Animal</a></li>
     </ul>
   </div>
 
@@ -1027,7 +1039,7 @@
   // Form submit
   document.querySelector('.form-submit').addEventListener('click', function() {
     this.textContent = '¡Mensaje enviado! ✓';
-    this.style.background = 'var(--verde-claro)';
+    this.style.background = '#4a7ab5';
     setTimeout(() => {
       this.textContent = 'Enviar mensaje →';
       this.style.background = '';

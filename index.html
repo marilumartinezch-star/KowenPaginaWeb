@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KOWEN — El bien para todas las generaciones</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-oscuro: #1a3a2a;
+    --verde-medio: #2d5c3f;
+    --verde-claro: #4a8c5c;
+    --verde-suave: #a8d4b0;
+    --tierra: #c4874a;
+    --tierra-claro: #f0d4b0;
+    --crema: #f7f2e8;
+    --blanco: #fdfaf5;
+    --texto: #1a2a1e;
+    --texto-suave: #4a6a52;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--blanco);
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(253,250,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(74,140,92,0.15);
+    transition: box-shadow .3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(26,58,42,0.08); }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    letter-spacing: .06em;
+    text-decoration: none;
+  }
+  .nav-logo span {
+    display: block;
+    font-size: .55rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    letter-spacing: .22em;
+    color: var(--verde-claro);
+    text-transform: uppercase;
+    margin-top: -2px;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: .85rem;
+    font-weight: 400;
+    color: var(--texto-suave);
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--verde-oscuro); }
+
+  .nav-cta {
+    background: var(--verde-oscuro);
+    color: var(--crema) !important;
+    padding: .55rem 1.3rem;
+    border-radius: 2rem;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--verde-claro) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6% 5% 6% 8%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp .8s .2s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--tierra);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5.5vw, 5.2rem);
+    line-height: 1.06;
+    color: var(--verde-oscuro);
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeUp .8s .4s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--verde-claro);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--texto-suave);
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp .8s .6s forwards;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp .8s .8s forwards;
+  }
+
+  .btn-primary {
+    background: var(--verde-oscuro);
+    color: var(--crema);
+    padding: .9rem 2rem;
+    border-radius: 2rem;
+    font-size: .9rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: .03em;
+    transition: background .25s, transform .2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--verde-claro); transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--verde-oscuro);
+    padding: .9rem 2rem;
+    border-radius: 2rem;
+    font-size: .9rem;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: .03em;
+    border: 1.5px solid var(--verde-suave);
+    transition: border-color .25s, transform .2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--verde-oscuro); transform: translateY(-2px); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--verde-oscuro) 0%, var(--verde-claro) 60%, var(--verde-suave) 100%);
+    z-index: 1;
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0; z-index: 2;
+    opacity: .08;
+    background-image:
+      radial-gradient(circle at 20% 20%, white 1px, transparent 1px),
+      radial-gradient(circle at 80% 80%, white 1px, transparent 1px),
+      radial-gradient(circle at 50% 50%, white 1.5px, transparent 1.5px);
+    background-size: 48px 48px, 48px 48px, 96px 96px;
+  }
+
+  .hero-word {
+    position: absolute;
+    z-index: 3;
+    font-family: var(--font-display);
+    color: white;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .hero-word-main {
+    font-size: clamp(5rem, 11vw, 10rem);
+    font-weight: 700;
+    letter-spacing: .08em;
+    display: block;
+    line-height: 1;
+    opacity: 0;
+    animation: fadeIn 1.2s .5s forwards;
+  }
+  .hero-word-sub {
+    font-size: .9rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: rgba(255,255,255,.7);
+    display: block;
+    margin-top: .6rem;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+  }
+
+  .hero-yanesha {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.5);
+    white-space: nowrap;
+  }
+
+  /* STATS */
+  .stats {
+    background: var(--verde-oscuro);
+    padding: 3rem 8%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .stat {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-right: 1px solid rgba(255,255,255,.1);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--verde-suave);
+    display: block;
+    line-height: 1;
+    margin-bottom: .4rem;
+  }
+  .stat-label {
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.55);
+    font-weight: 300;
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 8%; }
+
+  .section-eyebrow {
+    font-size: .7rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    font-weight: 500;
+    display: flex; align-items: center; gap: .6rem;
+    margin-bottom: 1rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--tierra);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    line-height: 1.15;
+    color: var(--verde-oscuro);
+    margin-bottom: 1.2rem;
+  }
+  .section-title em { font-style: italic; color: var(--verde-claro); }
+
+  .section-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--texto-suave);
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  /* SOBRE */
+  .sobre {
+    background: var(--crema);
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .sobre-visual {
+    position: relative;
+    height: 480px;
+  }
+  .sobre-box {
+    position: absolute;
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  .sobre-box-main {
+    width: 75%; height: 72%;
+    background: linear-gradient(145deg, var(--verde-medio), var(--verde-oscuro));
+    top: 0; left: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sobre-box-accent {
+    width: 55%; height: 50%;
+    background: var(--tierra-claro);
+    bottom: 0; right: 0;
+    border: 3px solid white;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .sobre-box-main-inner {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: rgba(255,255,255,.15);
+    letter-spacing: .1em;
+    user-select: none;
+  }
+  .sobre-box-accent-word {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-bottom: .25rem;
+  }
+  .sobre-box-accent-def {
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    font-weight: 400;
+  }
+
+  .sobre-content {}
+  .sobre-mission {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-left: 3px solid var(--verde-claro);
+    background: white;
+    border-radius: 0 .75rem .75rem 0;
+  }
+  .sobre-mission p {
+    font-size: .95rem;
+    line-height: 1.8;
+    color: var(--texto-suave);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* PROGRAMAS */
+  .programas { background: var(--blanco); }
+  .programas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .programa-card {
+    background: var(--crema);
+    border-radius: 1.25rem;
+    padding: 2rem 1.75rem;
+    transition: transform .3s, box-shadow .3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .programa-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--verde-claro);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .35s;
+  }
+  .programa-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(26,58,42,.1); }
+  .programa-card:hover::before { transform: scaleX(1); }
+
+  .prog-icon-wrap {
+    width: 52px; height: 52px;
+    border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .prog-name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-bottom: .5rem;
+  }
+  .prog-sub {
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    margin-bottom: .75rem;
+    font-weight: 500;
+  }
+  .prog-text {
+    font-size: .88rem;
+    line-height: 1.75;
+    color: var(--texto-suave);
+    font-weight: 300;
+  }
+
+  /* programa 5 - wide */
+  .programa-card.wide {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* IMPACTO */
+  .impacto {
+    background: var(--verde-oscuro);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .impacto::before {
+    content: 'KOWEN';
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: 18vw;
+    font-weight: 700;
+    color: rgba(255,255,255,.03);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .impacto .section-title { color: white; }
+  .impacto .section-title em { color: var(--verde-suave); }
+  .impacto .section-desc { color: rgba(255,255,255,.65); max-width: 480px; }
+
+  .impacto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .impacto-card {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: background .3s;
+  }
+  .impacto-card:hover { background: rgba(255,255,255,.09); }
+  .impacto-num {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--verde-suave);
+    line-height: 1;
+    margin-bottom: .5rem;
+    display: block;
+  }
+  .impacto-label {
+    font-size: .85rem;
+    color: rgba(255,255,255,.7);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ALIADOS */
+  .aliados { background: var(--crema); text-align: center; }
+  .aliados .section-title { text-align: center; }
+  .aliados .section-eyebrow { justify-content: center; }
+  .aliados-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+  .aliado-pill {
+    background: white;
+    border: 1px solid rgba(74,140,92,.2);
+    border-radius: 2rem;
+    padding: .6rem 1.4rem;
+    font-size: .82rem;
+    color: var(--texto-suave);
+    font-weight: 400;
+    letter-spacing: .03em;
+    transition: border-color .2s, color .2s;
+  }
+  .aliado-pill:hover { border-color: var(--verde-claro); color: var(--verde-oscuro); }
+
+  /* CONTACTO */
+  .contacto {
+    background: var(--blanco);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: .78rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--texto-suave);
+    margin-bottom: .5rem;
+    font-weight: 500;
+  }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: .85rem 1.1rem;
+    border: 1.5px solid rgba(74,140,92,.2);
+    border-radius: .75rem;
+    font-family: var(--font-body);
+    font-size: .9rem;
+    color: var(--texto);
+    background: var(--crema);
+    transition: border-color .2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--verde-claro); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--verde-oscuro);
+    color: var(--crema);
+    padding: 1rem;
+    border-radius: 2rem;
+    font-size: .95rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    letter-spacing: .04em;
+    transition: background .25s, transform .2s;
+    margin-top: .5rem;
+  }
+  .form-submit:hover { background: var(--verde-claro); transform: translateY(-2px); }
+
+  .contacto-info { padding-top: 1rem; }
+  .contacto-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.8rem;
+  }
+  .contacto-item-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--crema);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .contacto-item-text {}
+  .contacto-item-label {
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--tierra);
+    font-weight: 500;
+    margin-bottom: .2rem;
+  }
+  .contacto-item-val {
+    font-size: .92rem;
+    color: var(--texto-suave);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--texto);
+    color: rgba(255,255,255,.55);
+    padding: 3.5rem 8%;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: .06em;
+    display: block;
+    margin-bottom: .4rem;
+  }
+  .footer-tagline {
+    font-size: .8rem;
+    font-weight: 300;
+    letter-spacing: .08em;
+    color: rgba(255,255,255,.4);
+    font-style: italic;
+    margin-bottom: 1.2rem;
+  }
+  .footer-yanesha {
+    font-size: .7rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.25);
+  }
+  .footer-col-title {
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: .6rem; }
+  .footer-col ul li a {
+    font-size: .85rem;
+    color: rgba(255,255,255,.5);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--verde-suave); }
+  .footer-bottom {
+    background: rgba(0,0,0,.2);
+    padding: 1.2rem 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .75rem;
+    color: rgba(255,255,255,.25);
+    font-weight: 300;
+  }
+  .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s, transform .7s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 340px; }
+    .stats { grid-template-columns: repeat(2,1fr); }
+    .sobre { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 6%; }
+    .sobre-visual { height: 280px; }
+    .programas-grid { grid-template-columns: 1fr; }
+    .programa-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+    .impacto-grid { grid-template-columns: 1fr 1fr; }
+    .contacto { grid-template-columns: 1fr; gap: 3rem; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: .5rem; text-align: center; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#inicio" class="nav-logo">
+    KOWEN
+    <span>ONG · Perú</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Nosotros</a></li>
+    <li><a href="#programas">Programas</a></li>
+    <li><a href="#impacto">Impacto</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#contacto" class="nav-cta">Únete</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="hero-eyebrow">ONG · Fundada en Perú</div>
+    <h1 class="hero-title">
+      El <em>bien</em><br>para todas<br>las generaciones
+    </h1>
+    <p class="hero-desc">
+      Somos KOWEN, una organización que promueve el bienestar integral de niños, adolescentes, adultos mayores y el medio ambiente en todo el Perú, a través de educación e inclusión financiera.
+    </p>
+    <div class="hero-btns">
+      <a href="#programas" class="btn-primary">Nuestros programas</a>
+      <a href="#contacto" class="btn-secondary">Apóyanos</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-word">
+      <span class="hero-word-main">KOWEN</span>
+      <span class="hero-word-sub">Lengua yanesha' · "El bien"</span>
+    </div>
+    <div class="hero-yanesha">Pueblo originario amazónico del Perú</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <span class="stat-num">5</span>
+    <span class="stat-label">Programas activos</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">24</span>
+    <span class="stat-label">Regiones del Perú</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Poblaciones atendidas</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">∞</span>
+    <span class="stat-label">Compromiso con el bien</span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="sobre-visual reveal">
+    <div class="sobre-box sobre-box-main">
+      <div class="sobre-box-main-inner">KOWEN</div>
+    </div>
+    <div class="sobre-box sobre-box-accent">
+      <div class="sobre-box-accent-word">Kowen</div>
+      <div class="sobre-box-accent-def">Del idioma yanesha' · "El bien"</div>
+    </div>
+  </div>
+  <div class="sobre-content reveal">
+    <div class="section-eyebrow">Quiénes somos</div>
+    <h2 class="section-title">Nacimos de una<br>palabra <em>ancestral</em></h2>
+    <p class="section-desc">
+      KOWEN toma su nombre del idioma yanesha', lengua originaria amazónica del Perú. Esa palabra — el bien — define todo lo que hacemos: trabajar por las personas más vulnerables, cuidar el planeta y construir un Perú más justo para todas las edades.
+    </p>
+    <div class="sobre-mission">
+      <p>"Promovemos el bienestar integral de niños, adolescentes vulnerables, adultos mayores y comunidades, a través de educación, inclusión financiera y cuidado del medio ambiente en todo el territorio nacional."</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section class="programas" id="programas">
+  <div class="reveal">
+    <div class="section-eyebrow">Lo que hacemos</div>
+    <h2 class="section-title">Cinco programas,<br>un solo <em>propósito</em></h2>
+    <p class="section-desc">Cada programa lleva el nombre KOWEN porque todos comparten la misma raíz: hacer el bien en comunidad.</p>
+  </div>
+
+  <div class="programas-grid">
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#EAF3DE">🌿</div>
+      <div class="prog-sub">Medio ambiente</div>
+      <div class="prog-name">Kowen Verde</div>
+      <p class="prog-text">Educación ambiental, reforestación comunitaria y gestión de residuos en comunidades rurales y urbanas de todo el Perú.</p>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#E6F1FB">📚</div>
+      <div class="prog-sub">Educación</div>
+      <div class="prog-name">Kowen Aprende</div>
+      <p class="prog-text">Refuerzo escolar, alfabetización digital y acompañamiento pedagógico para niños y adolescentes en situación vulnerable.</p>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#FAEEDA">💰</div>
+      <div class="prog-sub">Finanzas</div>
+      <div class="prog-name">Kowen Finanzas</div>
+      <p class="prog-text">Talleres de educación financiera, ahorro y emprendimiento para familias y jóvenes excluidos del sistema financiero.</p>
+    </div>
+
+    <div class="programa-card wide reveal">
+      <div>
+        <div class="prog-icon-wrap" style="background:#EEEDFE">👴</div>
+      </div>
+      <div>
+        <div class="prog-sub">Adulto mayor</div>
+        <div class="prog-name">Kowen Mayor</div>
+        <p class="prog-text">Acompañamiento, alfabetización digital, salud preventiva y activación social para adultos mayores en situación de abandono o vulnerabilidad. Porque la experiencia de vida es el mayor patrimonio de una comunidad.</p>
+      </div>
+    </div>
+
+    <div class="programa-card reveal">
+      <div class="prog-icon-wrap" style="background:#FAECE7">🌱</div>
+      <div class="prog-sub">Adolescentes</div>
+      <div class="prog-name">Kowen Joven</div>
+      <p class="prog-text">Liderazgo, habilidades para la vida y orientación vocacional para adolescentes en zonas urbano-marginales y rurales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section class="impacto" id="impacto">
+  <div class="reveal">
+    <div class="section-eyebrow" style="color:var(--verde-suave)">Nuestro impacto</div>
+    <h2 class="section-title">El <em>bien</em> se mide<br>en personas</h2>
+    <p class="section-desc">Cada programa tiene indicadores claros de impacto. Así es como medimos que el bien llegue a quienes más lo necesitan.</p>
+  </div>
+
+  <div class="impacto-grid">
+    <div class="impacto-card reveal">
+      <span class="impacto-num">10K+</span>
+      <p class="impacto-label">Beneficiarios directos en la primera fase de operaciones en Lima y provincias.</p>
+    </div>
+    <div class="impacto-card reveal">
+      <span class="impacto-num">24</span>
+      <p class="impacto-label">Regiones del Perú donde KOWEN proyecta operar en los próximos 3 años.</p>
+    </div>
+    <div class="impacto-card reveal">
+      <span class="impacto-num">5</span>
+      <p class="impacto-label">Ejes de intervención que se complementan para lograr un impacto integral y sostenible.</p>
+    </div>
+    <div class="impacto-card reveal">
+      <span class="impacto-num">ODS</span>
+      <p class="impacto-label">Alineados a los Objetivos de Desarrollo Sostenible 1, 3, 4, 10, 13 y 15 de la ONU.</p>
+    </div>
+    <div class="impacto-card reveal">
+      <span class="impacto-num">100%</span>
+      <p class="impacto-label">Transparencia en el uso de fondos. Rendición de cuentas pública y auditoría externa anual.</p>
+    </div>
+    <div class="impacto-card reveal">
+      <span class="impacto-num">∞</span>
+      <p class="impacto-label">El cambio generacional que buscamos: que el bien se multiplique de familia en familia.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALIADOS -->
+<section class="aliados">
+  <div class="reveal">
+    <div class="section-eyebrow">Alianzas estratégicas</div>
+    <h2 class="section-title">Construimos el bien<br><em>juntos</em></h2>
+    <p class="section-desc" style="margin: 0 auto 0; text-align:center">KOWEN busca alianzas con instituciones que compartan nuestra visión de un Perú más justo y sostenible.</p>
+  </div>
+  <div class="aliados-grid reveal">
+    <div class="aliado-pill">Ministerio de Educación</div>
+    <div class="aliado-pill">MIDIS</div>
+    <div class="aliado-pill">UNICEF Perú</div>
+    <div class="aliado-pill">GIZ Perú</div>
+    <div class="aliado-pill">Municipalidades locales</div>
+    <div class="aliado-pill">Banco de la Nación</div>
+    <div class="aliado-pill">FECONAYA</div>
+    <div class="aliado-pill">Universidades</div>
+    <div class="aliado-pill">Empresas con RSE</div>
+    <div class="aliado-pill">Cooperación internacional</div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="reveal">
+    <div class="section-eyebrow">Únete al bien</div>
+    <h2 class="section-title">¿Quieres ser<br>parte de <em>KOWEN</em>?</h2>
+    <p class="section-desc" style="margin-bottom:2.5rem">Puedes sumarte como voluntario, donante, aliado institucional o simplemente difundiendo nuestra misión.</p>
+
+    <div class="contacto-item">
+      <div class="contacto-item-icon">📍</div>
+      <div class="contacto-item-text">
+        <div class="contacto-item-label">Sede principal</div>
+        <div class="contacto-item-val">Lima, Perú<br>Con cobertura nacional</div>
+      </div>
+    </div>
+    <div class="contacto-item">
+      <div class="contacto-item-icon">✉️</div>
+      <div class="contacto-item-text">
+        <div class="contacto-item-label">Correo</div>
+        <div class="contacto-item-val">contacto@kowen.org.pe</div>
+      </div>
+    </div>
+    <div class="contacto-item">
+      <div class="contacto-item-icon">🌐</div>
+      <div class="contacto-item-text">
+        <div class="contacto-item-label">Redes sociales</div>
+        <div class="contacto-item-val">@kowenperu</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="form-group">
+      <label>Nombre completo</label>
+      <input type="text" placeholder="Tu nombre">
+    </div>
+    <div class="form-group">
+      <label>Correo electrónico</label>
+      <input type="email" placeholder="tu@correo.com">
+    </div>
+    <div class="form-group">
+      <label>¿Cómo quieres participar?</label>
+      <select>
+        <option value="">Selecciona una opción</option>
+        <option>Voluntario/a</option>
+        <option>Donante</option>
+        <option>Aliado institucional</option>
+        <option>Prensa y difusión</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Mensaje</label>
+      <textarea placeholder="Cuéntanos sobre ti y cómo quieres contribuir..."></textarea>
+    </div>
+    <button class="form-submit">Enviar mensaje →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <span class="footer-logo">KOWEN</span>
+    <div class="footer-tagline">"Hacemos el bien desde las raíces del Perú"</div>
+    <div class="footer-yanesha">Kowen · Del idioma yanesha' · "El bien"</div>
+  </div>
+
+  <div class="footer-col">
+    <div class="footer-col-title">Programas</div>
+    <ul>
+      <li><a href="#">Kowen Verde</a></li>
+      <li><a href="#">Kowen Aprende</a></li>
+      <li><a href="#">Kowen Finanzas</a></li>
+      <li><a href="#">Kowen Mayor</a></li>
+      <li><a href="#">Kowen Joven</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <div class="footer-col-title">Organización</div>
+    <ul>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">Misión y visión</a></li>
+      <li><a href="#">Equipo</a></li>
+      <li><a href="#">Transparencia</a></li>
+      <li><a href="#">Aliados</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <div class="footer-col-title">Participa</div>
+    <ul>
+      <li><a href="#">Voluntariado</a></li>
+      <li><a href="#">Donaciones</a></li>
+      <li><a href="#">RSE empresarial</a></li>
+      <li><a href="#">Prensa</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 KOWEN — Asociación Civil sin Fines de Lucro · Perú</span>
+  <span><a href="#">Política de privacidad</a> · <a href="#">Transparencia</a></span>
+</div>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Form submit
+  document.querySelector('.form-submit').addEventListener('click', function() {
+    this.textContent = '¡Mensaje enviado! ✓';
+    this.style.background = 'var(--verde-claro)';
+    setTimeout(() => {
+      this.textContent = 'Enviar mensaje →';
+      this.style.background = '';
+    }, 3000);
+  });
+</script>
+</body>
+</html>

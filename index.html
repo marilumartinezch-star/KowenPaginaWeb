@@ -21,7 +21,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://www.kowen.org.pe/">
-<meta name="twitter:title" content=" — El bien para todas las generaciones">
+<meta name="twitter:title" content="KOWEN — El bien para todas las generaciones">
 <meta name="twitter:description" content="Iniciativa social peruana que promueve educación, inclusión financiera y bienestar para niños, adolescentes, adultos mayores y el medio ambiente.">
 <meta name="twitter:image" content="https://www.kowen.org.pe/og-image.jpg">
 
@@ -210,10 +210,30 @@
   .form-group textarea { resize: vertical; min-height: 120px; }
   .form-submit { width: 100%; background: var(--azul-osc); color: var(--crema); padding: 1rem; border-radius: 2rem; font-size: .95rem; font-weight: 500; border: none; cursor: pointer; font-family: var(--font-b); transition: background .25s, transform .2s; margin-top: .5rem; }
   .form-submit:hover { background: var(--azul-clar); transform: translateY(-2px); }
+  .form-submit:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+
+  .consent-group { display: flex; align-items: flex-start; gap: .65rem; margin: .3rem 0 1.1rem; }
+  .consent-group input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--azul-clar); flex-shrink: 0; cursor: pointer; }
+  .consent-group label { font-size: .78rem; line-height: 1.55; color: var(--texto-s); font-weight: 400; text-transform: none; letter-spacing: normal; cursor: pointer; }
+  .consent-group a { color: var(--azul-clar); text-decoration: underline; }
+  .dona-form .consent-group { grid-column: 1 / -1; margin: .2rem 0 .3rem; }
+  .dona-form .consent-group label { color: rgba(255,255,255,.65); }
+  .dona-form .consent-group a { color: var(--oro-claro); }
   .contacto-item { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.8rem; }
   .contacto-item-icon { width: 44px; height: 44px; border-radius: 50%; background: #dce8f5; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
   .contacto-item-label { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--oro); font-weight: 500; margin-bottom: .2rem; }
   .contacto-item-val { font-size: .92rem; color: var(--texto-s); line-height: 1.6; }
+
+  .legal { background: var(--blanco); padding: 5rem 8% 4rem; }
+  .legal-block { max-width: 780px; margin: 0 auto 3.5rem; }
+  .legal-block:last-child { margin-bottom: 0; }
+  .legal-block h3 { font-family: var(--font-d); font-size: 1.5rem; color: var(--azul-osc); margin-bottom: .4rem; }
+  .legal-updated { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--oro); margin-bottom: 1.6rem; }
+  .legal-block h4 { font-size: .85rem; color: var(--azul-osc); margin: 1.4rem 0 .5rem; letter-spacing: .02em; }
+  .legal-block p, .legal-block li { font-size: .88rem; line-height: 1.8; color: var(--texto-s); font-weight: 300; }
+  .legal-block ul { padding-left: 1.3rem; margin-bottom: .5rem; }
+  .legal-block li { margin-bottom: .3rem; }
+  .legal-notice { background: rgba(232,168,74,.1); border: 1px solid rgba(232,168,74,.3); border-radius: .75rem; padding: 1rem 1.2rem; font-size: .82rem; color: var(--texto-s); margin-top: 1.2rem; }
 
   footer { background: #0f1a30; color: rgba(255,255,255,.55); padding: 3.5rem 8%; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; }
   .footer-logo { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; color: white; letter-spacing: .06em; }
@@ -487,6 +507,10 @@
           <option>Aún no lo sé, solo quiero que me avisen</option>
         </select>
       </div>
+      <div class="consent-group">
+        <input type="checkbox" name="consentimiento" id="d-consent" required>
+        <label for="d-consent">He leído y acepto la <a href="#privacidad" target="_blank" rel="noopener">Política de Privacidad</a> y los <a href="#terminos" target="_blank" rel="noopener">Términos y Condiciones</a> sobre el tratamiento de mis datos personales, conforme a la Ley N° 29733.</label>
+      </div>
       <button class="dona-submit" type="submit" id="btn-dona">Quiero que me avisen →</button>
       <p class="dona-hint" id="dona-hint">No se te cobrará nada ahora. Solo guardamos tu interés para contactarte apenas esté listo el mecanismo formal de donación.</p>
     </form>
@@ -524,7 +548,7 @@
     </div>
     <div class="contacto-item">
       <div class="contacto-item-icon">✉️</div>
-      <div><div class="contacto-item-label">Correo</div><div class="contacto-item-val">En proceso</div></div>
+      <div><div class="contacto-item-label">Correo</div><div class="contacto-item-val">contacto@kowen.org.pe</div></div>
     </div>
     <div class="contacto-item">
       <div class="contacto-item-icon">🌐</div>
@@ -551,9 +575,53 @@
         </select>
       </div>
       <div class="form-group"><label for="f-mensaje">Mensaje</label><textarea name="mensaje" id="f-mensaje" placeholder="Cuéntanos sobre ti y cómo quieres contribuir..." required></textarea></div>
+      <div class="consent-group">
+        <input type="checkbox" name="consentimiento" id="f-consent" required>
+        <label for="f-consent">He leído y acepto la <a href="#privacidad" target="_blank" rel="noopener">Política de Privacidad</a> y los <a href="#terminos" target="_blank" rel="noopener">Términos y Condiciones</a> sobre el tratamiento de mis datos personales, conforme a la Ley N° 29733.</label>
+      </div>
       <button class="form-submit" type="submit" id="btn-submit">Enviar mensaje →</button>
-      <p style="font-size:.75rem;color:var(--texto-s);margin-top:.7rem;text-align:center" id="form-hint">Al enviar el mensaje estás aceptando los Términos y Condiciones del manejo de los datos personales</p>
+      <p style="font-size:.75rem;color:var(--texto-s);margin-top:.7rem;text-align:center" id="form-hint">Si el sitio está publicado en Netlify, el mensaje llega directo a tu panel. Si no, se abrirá tu correo hacia contacto@kowen.org.pe</p>
     </form>
+  </div>
+</section>
+
+<section class="legal" id="privacidad">
+  <div class="legal-block">
+    <h3>Política de Privacidad</h3>
+    <div class="legal-updated">Última actualización: julio 2026</div>
+    <p>KOWEN (en proceso de constitución como asociación sin fines de lucro en Perú) recopila y trata tus datos personales conforme a la Ley N° 29733, Ley de Protección de Datos Personales, y su reglamento.</p>
+
+    <h4>¿Qué datos recopilamos?</h4>
+    <ul>
+      <li>Nombre completo y correo electrónico, cuando llenas un formulario de contacto o de interés en donación.</li>
+      <li>Información adicional que decidas compartir: cómo quieres participar, tipo de donante, monto referencial de donación, mensaje.</li>
+    </ul>
+
+    <h4>¿Para qué usamos tus datos?</h4>
+    <ul>
+      <li>Responder tus consultas y solicitudes de voluntariado o alianza.</li>
+      <li>Contactarte cuando esté habilitado el mecanismo formal de donación, si dejaste tu interés.</li>
+      <li>No usamos tus datos con fines comerciales ni los vendemos ni cedemos a terceros, salvo obligación legal.</li>
+    </ul>
+
+    <h4>¿Cuánto tiempo los conservamos?</h4>
+    <p>Mientras sea necesario para las finalidades descritas, o hasta que solicites su eliminación.</p>
+
+    <h4>Tus derechos</h4>
+    <p>Puedes ejercer tus derechos de acceso, rectificación, cancelación y oposición (derechos ARCO) sobre tus datos personales escribiendo a <a href="mailto:contacto@kowen.org.pe" style="color:var(--azul-clar)">contacto@kowen.org.pe</a>.</p>
+
+    <div class="legal-notice">⚠️ Este es un borrador base. Como KOWEN aún no está constituida legalmente, recomendamos que esta política sea revisada y ajustada por un abogado antes de operar formalmente, especialmente el nombre del responsable del tratamiento una vez que exista la asociación inscrita.</div>
+  </div>
+
+  <div class="legal-block" id="terminos">
+    <h3>Términos y Condiciones</h3>
+    <div class="legal-updated">Última actualización: julio 2026</div>
+    <p>Al usar este sitio y enviar cualquiera de nuestros formularios, aceptas lo siguiente:</p>
+    <ul>
+      <li>Este sitio tiene fines informativos y de contacto. El contenido sobre programas, alcance e impacto refleja objetivos y proyecciones de KOWEN, no resultados ya alcanzados, mientras la organización esté en formación.</li>
+      <li>Los formularios de "Contacto" y "Donar" registran tu interés en participar o donar; no constituyen un compromiso vinculante de pago ni un contrato de donación mientras KOWEN no esté formalmente constituida.</li>
+      <li>KOWEN se reserva el derecho de actualizar estos términos conforme avance su proceso de constitución legal.</li>
+    </ul>
   </div>
 </section>
 
@@ -613,7 +681,7 @@
 </footer>
 <div class="footer-bottom">
   <span>© 2026 KOWEN — Iniciativa social en formación · Perú</span>
-  <span><a href="#">Política de privacidad</a> · <a href="#">Transparencia</a></span>
+  <span><a href="#privacidad">Política de privacidad</a> · <a href="#terminos">Términos y condiciones</a></span>
 </div>
 
 <a href="https://wa.me/51900000000?text=Hola%20KOWEN%2C%20quiero%20saber%20c%C3%B3mo%20participar" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp">
@@ -715,6 +783,12 @@
       setTimeout(() => { submitBtn.textContent = 'Enviar mensaje →'; submitBtn.style.background = ''; }, 2500);
       return;
     }
+    if (!document.getElementById('f-consent').checked) {
+      submitBtn.textContent = 'Debes aceptar los Términos y la Política de Privacidad';
+      submitBtn.style.background = '#c0524a';
+      setTimeout(() => { submitBtn.textContent = 'Enviar mensaje →'; submitBtn.style.background = ''; }, 3000);
+      return;
+    }
 
     const formData = new FormData(contactForm);
     const payload = {};
@@ -757,6 +831,12 @@
       submitBtn.textContent = 'Completa nombre y correo';
       submitBtn.style.background = '#e07a6f';
       setTimeout(() => { submitBtn.textContent = 'Quiero que me avisen →'; submitBtn.style.background = ''; }, 2500);
+      return;
+    }
+    if (!document.getElementById('d-consent').checked) {
+      submitBtn.textContent = 'Debes aceptar los Términos y la Política de Privacidad';
+      submitBtn.style.background = '#e07a6f';
+      setTimeout(() => { submitBtn.textContent = 'Quiero que me avisen →'; submitBtn.style.background = ''; }, 3000);
       return;
     }
 

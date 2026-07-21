@@ -44,6 +44,63 @@
   .nav-cta { background: var(--azul-osc); color: var(--crema) !important; padding: .5rem 1.3rem; border-radius: 2rem; transition: background .2s !important; }
   .nav-cta:hover { background: var(--azul-clar) !important; color: #fff !important; }
 
+  nav{
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+box-shadow:0 10px 30px rgba(0,0,0,.05);
+transition:.35s;
+}
+
+nav.scrolled{
+padding:.7rem 5%;
+background:rgba(255,255,255,.95);
+}
+  .btn-primary{
+
+background:linear-gradient(135deg,#1a2a4a,#4a7ab5);
+
+box-shadow:0 15px 35px rgba(42,74,122,.35);
+
+transition:.35s;
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-6px);
+
+box-shadow:0 25px 60px rgba(42,74,122,.45);
+
+}
+  .programa-card{
+
+border:1px solid rgba(0,0,0,.05);
+
+box-shadow:0 20px 60px rgba(0,0,0,.05);
+
+transition:.4s;
+
+}
+
+.programa-card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:0 35px 80px rgba(0,0,0,.12);
+
+}
+  body{
+
+background:
+
+radial-gradient(circle at top left,#eef4ff 0%,transparent 40%),
+
+radial-gradient(circle at bottom right,#fff8e8 0%,transparent 40%),
+
+#faf8f4;
+
+}
+  <span class="stat-num" data-target="24">0</span>
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 80px; position: relative; overflow: hidden; }
   .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 6% 5% 6% 8%; }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--oro); font-weight: 500; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .8s .2s forwards; }
@@ -57,7 +114,8 @@
   .btn-secondary { color: var(--azul-osc); padding: .9rem 2rem; border-radius: 2rem; font-size: .9rem; font-weight: 400; text-decoration: none; border: 1.5px solid var(--azul-suave); transition: border-color .25s, transform .2s; display: inline-block; }
   .btn-secondary:hover { border-color: var(--azul-osc); transform: translateY(-2px); }
   .hero-right { position: relative; overflow: hidden; }
-  .hero-right::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,#1a2a4a 0%,#2a4a7a 50%,#4a7ab5 100%); z-index: 1; }
+  .hero-right::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(10,20,40,.65),rgba(10,20,40,.75)),
+        url("assets/images/hero.jpg") center center/cover; z-index: 1; }
   .hero-pattern { position: absolute; inset: 0; z-index: 2; opacity: .05;
     background-image: radial-gradient(circle at 20% 20%, white 1px, transparent 1px), radial-gradient(circle at 80% 80%, white 1px, transparent 1px), radial-gradient(circle at 50% 50%, #e8a84a 1.5px, transparent 1.5px);
     background-size: 48px 48px, 48px 48px, 96px 96px; }
@@ -164,6 +222,11 @@
   }
 </style>
 </head>
+  <a href="https://wa.me/51999999999"
+class="whatsapp"
+target="_blank">
+
+</a>
 <body>
 
 <nav id="nav">
@@ -452,7 +515,63 @@
   <span>© 2025 KOWEN — Asociación Civil sin Fines de Lucro · Perú</span>
   <span><a href="#">Política de privacidad</a> · <a href="#">Transparencia</a></span>
 </div>
+section{
 
+animation:fade .8s ease;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+  <button id="darkMode">🌙</button>
+  <form
+name="contacto"
+method="POST"
+data-netlify="true">
+
+<input
+type="hidden"
+name="form-name"
+value="contacto">
+
+<input
+type="text"
+name="nombre"
+required>
+
+<input
+type="email"
+name="email"
+required>
+
+<textarea
+name="mensaje"
+required></textarea>
+
+<button type="submit">
+
+Enviar
+
+</button>
+
+</form>
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
